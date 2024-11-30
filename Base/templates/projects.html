@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}My portfolio{% endblock %}
+
+{% block content %}
+<!-- home content -->
+<div id="portfolio">
+    <div class="container my-5">
+        <h1 class="text-center pb-5">Projects</h1>
+        <div class="row g-4">
+            {% for project in projects %}
+            <div class="col">
+                <h5 class="card-title">{{ project.name }}</h5>
+                <div class="card" style="width: 18rem;">
+                    {% if project.picture %}
+                    <img src="{{ project.picture.url }}" class="card-img-top" style="height: 150px; object-fit: cover;">
+                    {% endif %}
+                    <div class="card-body">
+                      
+                      <p class="card-text"><strong>Technologies Used:</strong> {{ project.technologies_used }}</p>    
+                      <p class="card-text"><strong>Description:</strong> {{ project.description }}</p>                  
+                      <a href="{{ project.github_link }}" class="btn btn-primary">GitHub</a>
+                    </div>
+                  </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+

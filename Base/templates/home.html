@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<!-- home content -->
+<section class="home">
+    <div class="content">
+        <h5>Hello</h5>
+        <h3>I'm <span>Marshall</span></h3>           
+        <p>I am a driven computer science student.
+            <br>passionate about the web!.
+        </p>
+        <h2 class="about">Full-Stack Developer</h2>
+        <!-- <button id="btn1">Download CV</button> -->
+        <form method="GET" action="{{ MEDIA_URL }}cv/Marshall Mutimbwa CV.pdf">
+            <button type="submit" id="btncv2">Download My CV</button>
+        </form>
+    </div>
+    <div class="img">
+        <img src="{% static 'images/wbg.png'%}" alt="">
+    </div>
+</section>
+<!-- home content -->
+{% endblock %}

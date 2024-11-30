@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}About me{% endblock %}
+
+{% block content %}
+
+<div id="about">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 py-3 py-md-0">
+                <div class="card">
+                    {% if about.picture %}
+                    <img src="{{ about.picture.url }}" alt="">
+                    {% endif %}
+                </div>
+            </div>
+            <div class="col-md-8 py-3 py-md-0">
+                <h3>About Me</h3>
+                <h5>Full Stack Developer</h5>
+                <p>{{ about.story }}</p>
+                <h2>Name: <span>{{ about.name }}</span></h2>
+                <h2>Surname: <span>{{ about.surname }}</span></h2>
+                <h2>Age: <span>{{ about.age }} Years</span></h2>
+                <h2>From: <span>Zimbabwe</span></h2>
+                <h2>Email: <span>{{ about.email }}</span></h2>
+                <!-- <button id="btncv2">DOWNLOAD CV</button> -->
+                <form method="GET" action="{{ MEDIA_URL }}cv/Marshall Mutimbwa CV.pdf">
+                    <button type="submit" id="btncv2">Download My CV</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block outside_content %}
+    <div id="about2">
+        <div class="portfolio-section">
+            <!-- Skills Section -->
+            <div class="skills-section">
+                <h2 class="section-title">Skills</h2>
+                <ul class="skills-list">
+                    {% for skill in skills %}
+                    <li class="skill-item">{{ skill.skill }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        
+            <!-- Certifications Section -->
+            <div class="certifications-section">
+                <h2 class="section-title">Certifications</h2>
+                <div class="certifications-grid">
+                    {% for certification in certifications %}
+                    <div class="certification-card">
+                        <img src="{{ certification.picture.url }}" alt="{{ certification.certification }}" class="certification-img">
+                        <h3 class="certification-title">{{ certification.certification }}</h3>
+                        <p class="certification-description">{{ certification.description }}</p>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
